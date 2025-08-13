@@ -18,28 +18,37 @@ Make sure the following tools are installed on your system:
 
 ## ⚙️ Installation Guide
 
-1. 🚚 **Clone the repository**
+### 1. 🚚 Clone the repository
 
 ```bash
-git clone https://github.com/Krix-Slark/Kris-Mart.git
-cd Kris-Mart
+git clone https://github.com/NayThway-Ethan/ygea-landing-page.git
+cd ygea-landing-page
+```
 
-2. 🧩 Install PHP dependencies
+### 2. 🧩 Install PHP dependencies
 
-```bash 
+```bash
 composer install
+```
 
-3. 🔧 Set up environment variables
+### 3. 🔧 Set up environment variables
+
+Copy the `.env.example` file to `.env` and configure your database settings(No DB Needed in this project).
 
 ```bash
 cp .env.example .env
+```
 
-4. 🔒 Generate application key
+### 4. 🔒 Generate application key
 
 ```bash
 php artisan key:generate
+```
 
-5. 🏃‍♂️ Run the application
+### 5. 🏃‍♂️ Run the application
 
 ```bash
 php artisan serve
+```
+
+---
