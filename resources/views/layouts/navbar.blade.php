@@ -1,11 +1,11 @@
-
 <nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm">
   <div class="container flex-column">
 
     <!-- Top row -->
     <div class="d-flex justify-content-between align-items-center w-100">
       <!-- Left: Brand -->
-      <a href="{{ asset('/') }}" class="navbar-brand fw-bold fs-2 m-0" style="font-family: 'Poppins', sans-serif;">Kris-Mart</a>
+      <a href="{{ asset('/') }}" class="navbar-brand fw-bold fs-2 m-0"
+        style="font-family: 'Poppins', sans-serif;">Kris-Mart</a>
 
       <!-- Center: Search icon -->
       <div class="d-flex justify-content-center flex-grow-1">
@@ -20,14 +20,38 @@
       </div>
     </div>
 
-    <!-- Second row: Navigation links -->
-    <ul class="navbar-nav d-flex flex-row gap-5 mt-3">
-      <li class="nav-item"><a class="nav-link text-dark fs-5" href="#promo">Promo</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fs-5" href="#about">About Us</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fs-5" href="#shop">Your Own Shop</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fs-5" href="#luxury">Luxury</a></li>
-      <li class="nav-item"><a class="nav-link text-dark fs-5" href="#customer-care">Customer Care</a></li>
-    </ul>
+<!-- Second row: Navigation links -->
+<div class="collapse navbar-collapse w-100 mt-1" id="mainNav">
+  <div class="d-flex flex-column flex-lg-row w-100 justify-content-between align-items-center">
+
+    <!-- Left-aligned Promo -->
+    <div class="d-flex flex-column align-items-start align-items-lg-start mb-2 mb-lg-0">
+      <a class="nav-link text-dark  fs-5" href="#promo">Promo</a>
+    </div>
+
+    <!-- Center links -->
+    <div class="d-flex flex-column flex-lg-row gap-3 gap-lg-5 align-items-center mb-2 mb-lg-0">
+      <a class="nav-link text-dark fs-5 me-lg-5" href="#about">About Us</a>
+      <a class="nav-link text-dark fs-5 ms-lg-5 me-lg-5" href="#shop">Your Own Shop</a>
+      <a class="nav-link text-dark fs-5 ms-lg-5" href="#luxury">Luxury</a>
+    </div>
+
+    <!-- Right-aligned Customer Care -->
+    <div class="d-flex flex-column align-items-end align-items-lg-end">
+      <a class="nav-link text-dark fs-5" href="#customer-care">Customer Care</a>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Navbar toggler button (add this inside your top row, near icons) -->
+<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+  data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
+  aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
 
     <!-- Collapsible Search Box -->
     <div id="searchBox" class="search-collapse w-100" style="box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
