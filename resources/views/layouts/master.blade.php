@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
-    @yeild('css')
+    <link rel="icon" type="image/" href="{{ asset('images/logo.png') }}">
+    @yield('css') 
 </head>
 <body>
-     @yield('layouts.navbar')
+    @yield('navbar') 
     @yield('content')
-    @include('layouts.footer')
-
+    @yield('footer') 
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     @yield('script')

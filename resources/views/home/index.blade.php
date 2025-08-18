@@ -1,9 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Home')
 
-@endsection
-
-@section('layouts.navbar')
+@section('navbar')
     @include('layouts.navbar')
 @endsection
 
@@ -12,10 +10,12 @@
 @endsection
 
 @section('content')
-    <h1>Welcome to Kris-Mart</h1>
-    <p>Your one-stop shop for all your needs.</p>
+   
+@endsection
+@section('script')
+    <script src="{{ asset('js/style.js') }}"></script>
 @endsection
 
-@section('layouts.footer')
+@section('footer')
     @include('layouts.footer')
 @endsection
