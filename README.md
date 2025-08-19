@@ -1,6 +1,6 @@
 # Kris-Mart 🛒
-
-A Laravel-based e-commerce application.
+Sell , Buy , Deliver - All in One...
+# A Laravel-based e-commerce application.
 
 ---
 

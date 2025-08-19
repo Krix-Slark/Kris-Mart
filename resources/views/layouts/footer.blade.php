@@ -59,7 +59,9 @@
             <p class="text-muted mt-2">Email: <a href="mailto:support@kris-mart.com"
                     class="text-decoration-none">devslark15@gmail.com </a>Contact Us</p>
             <p class="text-muted mt-2">Check our FAQ for quick answers. <a href="#" class=""><i
-                        class="fas fa-circle-info fs-5 "></i></a>
+                        class="fas fa-circle-info fs-5 
+                        
+                        "></i></a>
             </p>
             <p class="text-muted mt-2">We value your feedback to improve our services.</p>
 
