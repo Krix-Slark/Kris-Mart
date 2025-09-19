@@ -18,6 +18,10 @@
         <a href="#" class="icon"><i class="fas fa-shopping-cart fs-4 me-3"></i></a>
         <a href="#" class="icon"><i class="fas fa-user fs-4 me-3"></i></a>
       </div>
+
+
+
+      
     </div>
 
 <!-- Second row: Navigation links -->
@@ -25,12 +29,12 @@
   <div class="d-flex flex-column flex-lg-row w-100 justify-content-between align-items-center">
 
     <!-- Left-aligned Promo -->
-    <div class="d-flex flex-column align-items-start align-items-lg-start mb-2 ">
+    <div class="d-flex flex-column align-items-start align-items-lg-start mb-2">
       <a class="nav-link text-dark" href="#promo" style="font-size:22px;">Promo</a>
     </div>
 
     <!-- Center links -->
-    <div class="d-flex flex-column flex-lg-row gap-3 gap-lg-5 align-items-center mb-2 mb-lg-0">
+    <div class="d-flex flex-column flex-lg-row gap-3 gap-lg-5 align-items-center mb-lg-0">
       <a class="nav-link text-dark me-lg-4 " href="#about" style="font-size:22px;">About Us</a>
       <a class="nav-link text-dark ms-lg-5 me-lg-4" href="#shop" style="font-size:22px;">Your Own Shop</a>
       <a class="nav-link text-dark ms-lg-4" href="#luxury" style="font-size:22px;">Luxury</a>
