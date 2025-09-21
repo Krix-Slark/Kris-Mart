@@ -36,21 +36,19 @@
     <div class="row">
       @foreach($products as $product)
         <div class="col-12 col-md-3">
-          <div class="card mt-3">
-            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid"
-              style="overflow: hidden; object-fit: cover;">
-
-          </div>
-          <div class="card-body text-start">
-            <h5 class="card-title mt-3">{{ $product->name }}</h5>
+          <div class="card mt-3 h-100 border-0 shadow-sm">
+            <a href="#"><img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid"
+              style="overflow: hidden; object-fit: cover; "></a>
+ <div class="card-body text-start">
+            <h5 class="card-title mt-1">{{ $product->name }}</h5>
             <p class="card-text mt-3" style="font-size: 14px; text-align: justify;">
-              {{ Str::limit($product->description, 150) }}
+              {{ Str::limit($product->description, 100) }}
             </p>
             <span class="text-success fw-bold">
               {{ number_format($product->price) }} Ks
             </span>
           </div>
-          <div class="mt-2 d-flex justify-content-end gap-3">
+          <div class="mb-3 d-flex justify-content-end gap-3">
             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-warning">Edit</a>
 
             <form action="{{ route('products.destroy', $product->id) }}" method="POST"
@@ -60,6 +58,9 @@
               <button type="submit" class="btn btn-sm btn-danger">Delete</button>
             </form>
           </div>
+          </div>
+         
+          
 
         </div>
       @endforeach
