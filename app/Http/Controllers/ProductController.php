@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Product;
@@ -7,80 +6,99 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a single product.
-     *
-     * @param  int  $id
-     */
-    public function show($id)
+    // Guest landing page
+    public function index()
     {
-        // Find the product by its id or show 404 if not found
-        $product = Product::findOrFail($id);
-
-        // Return a view and pass the product data to it
-        return view('product.show', compact('product'));
+        $products = Product::all();
+        return view('home.index', compact('products'));
     }
 
+    // Admin list
+    public function adminIndex()
+    {
+        $products = Product::all();
+        return view('admin.index', compact('products'));
+    }
+
+    // Show create form
     public function create()
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
+    // Store new product
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric',
-            'image' => 'nullable|image|max:2048', // max 2MB
-        ]);
-
-        $data = $request->only(['name', 'description', 'price']);
-
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('products', 'public');
-            $data['image'] = $path; // store relative path in DB
-        }
-
-        Product::create($data);
-
-        return redirect()->route('home')->with('success', 'Product added successfully!');
-    }
-    // Show edit form
-    public function edit($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('products.edit', compact('product'));
-    }
-
-    // Handle update
-    public function update(Request $request, $id)
-    {
-        $product = Product::findOrFail($id);
-
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'name' => 'required|string',
+            'description' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'nullable|image|max:2048',
         ]);
 
         $data = $request->only(['name', 'description', 'price']);
 
-        // Update image if uploaded
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+
+            $destination = public_path('images/Shop_Items');
+            if (!file_exists($destination)) {
+                mkdir($destination, 0777, true);
+            }
+
+            $file->move($destination, $filename);
+            $data['image'] = $filename;
+        }
+
+        Product::create($data);
+
+        return redirect()->route('admin.products')->with('success', 'Product added successfully!');
+    }
+
+    // Show edit form
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('admin.products.edit', compact('product'));
+    }
+
+    // Update product
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        $product = Product::findOrFail($id);
+        $data = $request->only(['name', 'description', 'price']);
+
+        // Handle image upload
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($product->image && file_exists(storage_path('app/public/' . $product->image))) {
-                unlink(storage_path('app/public/' . $product->image));
+            if ($product->image && file_exists(public_path('images/Shop_Items/' . $product->image))) {
+                unlink(public_path('images/Shop_Items/' . $product->image));
             }
-            $path = $request->file('image')->store('products', 'public');
-            $data['image'] = $path;
+
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+
+            $destination = public_path('images/Shop_Items');
+            if (!file_exists($destination)) {
+                mkdir($destination, 0777, true);
+            }
+
+            $file->move($destination, $filename);
+            $data['image'] = $filename;
         }
 
         $product->update($data);
 
-        return redirect()->route('home')->with('success', 'Product updated successfully!');
+        return redirect()->route('admin.products')->with('success', 'Product updated successfully!');
     }
 
     // Delete product
@@ -88,13 +106,13 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Delete image if exists
-        if ($product->image && file_exists(storage_path('app/public/' . $product->image))) {
-            unlink(storage_path('app/public/' . $product->image));
+        // Delete image file if exists
+        if ($product->image && file_exists(public_path('images/Shop_Items/' . $product->image))) {
+            unlink(public_path('images/Shop_Items/' . $product->image));
         }
 
         $product->delete();
 
-        return redirect()->route('home')->with('success', 'Product deleted successfully!');
+        return redirect()->route('admin.products')->with('success', 'Product deleted successfully!');
     }
 }
